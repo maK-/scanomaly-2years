@@ -1,0 +1,8 @@
+#apt install libsqlite3-dev ;)
+yapsy
+numpy
+requests
+fuzzywuzzy
+python-Levenshtein
+colored
+apsw
