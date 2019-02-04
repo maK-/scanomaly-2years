@@ -1,4 +1,4 @@
-# scanomalie
+# scanomaly
 Automated web fuzzing for anomalies
 
 ## Description
