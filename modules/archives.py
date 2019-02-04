@@ -10,7 +10,6 @@ class Archives(IPlugin):
 
     def __init__(self):
         self.requestList = [] #Store generated request objects
-        self.data = FileOp('/root/scanomalie/lists/archive-file.txt').reader()
         self.prepend =  [
                         '_','.','~','%20','-','.~','Copy%20of%20',
                         'copy%20of%20','Copy_','Copy%20','Copy_of_',
@@ -26,7 +25,7 @@ class Archives(IPlugin):
             module):
         d1 = ''
         d2 = ''
-        data = FileOp(cwd+'/lists/archive-file.txt').reader()
+        self.data = FileOp(cwd+'/lists/archive-file.txt').reader()
         shuffled = random.shuffle(data)
         for url in urls:
             u = UrlObject(url)
