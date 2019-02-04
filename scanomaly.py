@@ -221,12 +221,12 @@ if __name__ == '__main__':
 
     #Change all requests in list to random agent
     if args.agentlist == True and ReqList != None:
-        ua = UserAgent(ReqList)
+        ua = UserAgent(ReqList, cwd)
         ReqList = ua.agentlist()
 
     #Change all requests to random agents
     if args.agentran == True and ReqList != None:
-        ua = UserAgent(ReqList)
+        ua = UserAgent(ReqList, cwd)
         ReqList = ua.agentran()
 
     #Run Scan

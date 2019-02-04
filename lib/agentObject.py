@@ -5,8 +5,8 @@ import random
 class UserAgent:
 
     #Initialize our object with list of requests to make
-    def __init__(self, reqList):
-        self.agents = FileOp('/root/scanomalie/lists/user-agents.txt').reader()
+    def __init__(self, reqList, cwd):
+        self.agents = FileOp(cwd+'/lists/user-agents.txt').reader()
         self.reqList = reqList.copy()
 
     #Change all requests to a single agent
