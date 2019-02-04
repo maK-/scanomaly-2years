@@ -87,6 +87,8 @@ class Database:
             print('SQL Error: get responses')
 
     def return_all(self):
+        self.conn = apsw.Connection(self.dbfile)
+        self.cursor = self.conn.cursor()
         select = 'SELECT requests.module, requests.url, responses.responseSize,'
         select += ' responses.statusCode, responses.time, responses.numHeaders,'
         select += ' responses.numTokens FROM requests '
@@ -105,6 +107,8 @@ class Database:
                 print(response)
         except apsw.OperationalError:
             print('SQL Error: return all')
+        except Exception as e:
+            print(e)
         return
             
 

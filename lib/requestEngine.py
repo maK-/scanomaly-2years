@@ -114,9 +114,6 @@ class RequestEngine:
             with backupdb.backup("main", self.resp_db.conn, "main") as b:
                 while not b.done:
                     b.step(100)
-            print('===RESULTS====')
-            if self.display == True:
-                self.resp_db.return_all()
     
     #This stores requests to the DB
     def requestToDB(self, reqID):

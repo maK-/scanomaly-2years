@@ -236,3 +236,8 @@ if __name__ == '__main__':
                                     args.ignorestatus, args.printed)
         r_engine.build_rq_toscan()
         r_engine.run()
+
+    #Print output from DB
+    if args.printed == True and args.database != None:
+        outdb = Database(args.database)
+        outdb.return_all()

@@ -4,6 +4,8 @@ from yapsy.IPlugin import IPlugin
 from lib.requestObject import RequestObject
 from lib.urlObject import UrlObject
 from lib.fileOp import FileOp
+import random
+import string
 
 class Baseline(IPlugin):
 
