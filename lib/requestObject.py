@@ -102,16 +102,16 @@ class RequestObject:
                             "headers": str(rq.headers)
                         }
         except requests.exceptions.Timeout:
-            resp_data['statusCode'] = 'Timeout'
+            resp_data['statusCode'] = '-1'
             pass
         except requests.exception.ConnectionTimeout:
-            resp_data['statusCode'] = 'Connection Timeout'
+            resp_data['statusCode'] = '-2'
             pass
         except requests.exceptions.ConnectionError:
-            resp_data['statusCode'] = 'Connection Error'
+            resp_data['statusCode'] = '-3'
             pass
         except requests.exceptions.TooManyRedirects:
-            resp_data['statusCode'] = 'Too Many Redirects'
+            resp_data['statusCode'] = '-4'
             pass
         
         try:
