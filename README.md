@@ -65,9 +65,16 @@ This module scans a directory for common archive files and generates additional 
 #### dirb-files
 This modules scans a directory for common file names using a specified file extension (default: html)
 
-You can specify the filetype or file extension to use with `-ft`
+You can specify the filetype or file extension to use with `-dl [filetype] [filetype]...`
 
-` ./scanomaly.py -u http://127.0.0.1/ -m dirb-files -ft php -scan -t 10`
+` ./scanomaly.py -u http://127.0.0.1/ -m dirb-files -dl php -scan -t 10`
+
+### dirb-custom
+This module scans a directory for a provided file list
+
+You can specify a file list to use by using `-dl [wordlist]`
+
+` ./scanomaly.py -u http://127.0.0.1/ -m dirb-custom -dl [wordlist] -scan -t 10`
 
 #### vhost
 This scans a server for common dev virtual hosts or for a provided list of domains
