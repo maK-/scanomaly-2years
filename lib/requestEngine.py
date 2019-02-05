@@ -15,6 +15,7 @@ class RequestEngine:
         self.requestList = requestList.copy()
         self.rL = requestList.copy()
         self.rLsize = len(self.requestList)
+        self.dbname = dbname
         self.rid = str(time.time())
         self.resp_db = None
         self.req_db = None
@@ -61,7 +62,7 @@ class RequestEngine:
                 p.start()
             for p in self.threads:
                 p.join()
-        except KeyboardInterrup:
+        except KeyboardInterrupt:
             print('Terminating processes...')
             for p in self.threads:
                 p.terminate()

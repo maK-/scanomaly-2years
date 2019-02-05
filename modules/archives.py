@@ -72,7 +72,7 @@ class Archives(IPlugin):
                                             module)
                     self.requestList.append(req_get)
                 for i in self.common:
-                        for j in self.shuffled:
+                        for j in self.data:
                                 d1 = u.u_d + i + j
                                 req_get = RequestObject('reqID',"GET", proxy, headers, 
                                             timeout, cookies, d1, postdata,
