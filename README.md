@@ -1,5 +1,5 @@
 # scanomaly
-Automated web fuzzing for anomalies
+Automated web fuzzing for anomalies (use python 3.6+)
 
 ## Description
 The goal of this tool is to be a flexible request fuzzer. Generating lists of requests to make via the different modules. I'll hopefully continuously add new modules as I get more ideas.
