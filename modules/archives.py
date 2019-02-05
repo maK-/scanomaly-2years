@@ -26,13 +26,12 @@ class Archives(IPlugin):
         d1 = ''
         d2 = ''
         self.data = FileOp(cwd+'/lists/archive-file.txt').reader()
-        self.shuffled = random.shuffle(self.data)
         for url in urls:
             u = UrlObject(url)
 
             #If no lastfile
             if u.lastfile != '':
-                for i in self.shuffled:
+                for i in self.data:
                     d1 = u.u_q + i
                     req_get = RequestObject('reqID',"GET", proxy, headers, 
                                             timeout, cookies, d1, postdata,
@@ -52,7 +51,7 @@ class Archives(IPlugin):
                                             module)
                     self.requestList.append(req_get)
                     
-                    for j in self.shuffled:
+                    for j in self.data:
                         d2 = u.u_d + i + u.lastfile + j
                         req_get = RequestObject('reqID',"GET", proxy, headers, 
                                             timeout, cookies, d2, postdata,
@@ -61,7 +60,7 @@ class Archives(IPlugin):
 
             #If no lastpath    
             if u.lastpath != '':
-                for i in self.shuffled:
+                for i in self.data:
                     d1 = u.u_d + u.lastpath + i
                     req_get = RequestObject('reqID',"GET", proxy, headers, 
                                             timeout, cookies, d1, postdata,
@@ -82,7 +81,7 @@ class Archives(IPlugin):
             #Else
             else:
                 for i in self.common:
-                    for j in self.shuffled:
+                    for j in self.data:
                         d1 = u.u_d + i + j
                         req_get = RequestObject('reqID',"GET", proxy, headers, 
                                             timeout, cookies, d1, postdata,
