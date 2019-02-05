@@ -24,7 +24,7 @@ class Baseline(IPlugin):
         for url in urls:
             for j in requestMethods:
                 req_get = RequestObject('reqID', j, proxy, headers, timeout, 
-                                        coookies, url, postdata, module)
+                                        cookies, url, postdata, module)
                 requestList.append(req_get)
 
         for url in urls:
