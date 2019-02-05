@@ -178,6 +178,11 @@ if __name__ == '__main__':
         for z in run_mods:
             if z != None:
                 #If the module name matches - pass the right arguments to gen
+                if z.name == 'baseline':
+                    if z.name not in args.modexcl:
+                        results = z.plugin_object.gen(cwd, urls, proxies,
+                                                        total_headers, timeout,
+                                                        cookies, data, z.name)
                 if z.name == 'repo':
                     if z.name not in args.modexcl:
                         results = z.plugin_object.gen(cwd, urls, proxies, 
