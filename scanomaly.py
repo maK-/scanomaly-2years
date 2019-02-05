@@ -204,6 +204,12 @@ if __name__ == '__main__':
                                                         total_headers, timeout, 
                                                         cookies, data, z.name, 
                                                         args.datalist)
+                if z.name == 'dirb-custom':
+                    if z.name not in args.modexcl:
+                        results = z.plugin_object.gen(cwd, urls, proxies,
+                                                        total_headers, timeout,
+                                                        cookies, data, z.name,
+                                                        args.datalist)
                 if z.name == 'vhost':
                     if z.name not in args.modexcl:
                         results = z.plugin_object.gen(cwd, urls, proxies, 
