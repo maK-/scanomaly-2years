@@ -78,6 +78,8 @@ class RequestEngine:
             counter += val
             if counter == self.numthread-1:
                 break
+        while not self.q.empty():
+            time.sleep(1)
         self.q.put(None)
         
     #This functon takes a request object from the queue to process it
