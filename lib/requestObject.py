@@ -104,7 +104,7 @@ class RequestObject:
         except requests.exceptions.Timeout:
             resp_data['statusCode'] = '-1'
             pass
-        except requests.exceptions.ConnectionTimeout:
+        except requests.exceptions.ConnectTimeout:
             resp_data['statusCode'] = '-2'
             pass
         except requests.exceptions.ConnectionError:
