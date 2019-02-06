@@ -31,11 +31,13 @@ class Vhost(IPlugin):
                 req_get = RequestObject('reqID', "GET", proxy, new_h, timeout, 
                                         cookies, url, postdata, module)
                 requestList.append(req_get)
-                subd = i+'.'+domain
-                new_h = headers.copy()
-                new_h['Host'] = subd
-                req_get = RequestObject('reqID', "GET", proxy, new_h, timeout, 
-                                        cookies, url, postdata, module)
+                if i != '':
+                    subd = i+'.'+domain
+                    new_h = headers.copy()
+                    new_h['Host'] = subd
+                    req_get = RequestObject('reqID', "GET", proxy, new_h, 
+                                            timeout, cookies, url, postdata, 
+                                            module)
                 requestList.append(req_get)
             if len(datalist) > 1:
                 for i in domains:
