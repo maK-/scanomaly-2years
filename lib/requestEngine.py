@@ -6,6 +6,7 @@ from numpy import array_split
 import time
 import apsw
 import requests
+import sys
 
 class RequestEngine:
 
