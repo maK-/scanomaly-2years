@@ -23,8 +23,6 @@ The options with * below are compulsory. By default it used 2 threads
 
 `-db` store in a database
 
-`-sc` store the full response body
-
 ## Modules
 To use all modules and view their info use `-m all -mi`
 If you want to store the responses for the folowing modules, add `-db [databasename]`

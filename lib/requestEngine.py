@@ -86,13 +86,17 @@ class RequestEngine:
     def makereq(self, count):
         rq = requests.session()
         while not self.rq_toscan.empty():
-            i = self.rq_toscan.get()
-            response = i.request(rq)
-            if response != None:
-                if(int(response.responseSize) not in self.i_size and
-                    int(response.statusCode) not in self.i_status):
-                    self.q.put(response)
-            time.sleep(self.timeout)
+            try:
+                i = self.rq_toscan.get(timeout=10)
+                response = i.request(rq)
+                if response != None:
+                    if(int(response.responseSize) not in self.i_size and
+                        int(response.statusCode) not in self.i_status):
+                        self.q.put(response)
+                time.sleep(self.timeout)
+            except:
+                self.end.put(1)
+                return
         self.end.put(1)
 
     #This pops a response off the queue and stores it in the DB
