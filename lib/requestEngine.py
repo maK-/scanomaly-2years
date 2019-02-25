@@ -30,9 +30,9 @@ class RequestEngine:
         self.end = multiprocessing.Queue()
         self.q = multiprocessing.Queue() #A queue to hold the response objects
         self.rq_toscan = multiprocessing.Queue() #Requests to be scanned
-        self.i_size = map(int, i_size)           #Response sizes to not store
-        self.i_status = map(int, i_status)       #Response statuses to not store
-        
+        self.i_size = list(map(int, i_size))     #Response sizes to not store
+        self.i_status = list(map(int, i_status)) #Response statuses to not store
+    
     #Build request Queue and set request IDs
     def build_rq_toscan(self):
         printdata = 'Adding requests to queue: '
