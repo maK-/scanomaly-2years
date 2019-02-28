@@ -47,18 +47,12 @@ class Vhost(IPlugin):
                                             timeout, cookies, url, postdata,
                                             module)
                     requestList.append(req_get)
-                    for j in common:
-                        new_h = headers.copy()
-                        new_h['Host'] = j+'.'+i
-                        req_get = RequestObject('reqID', "GET", proxy, new_h,
-                                                timeout, cookies, url,
-                                                postdata, module)
-                        requestList.append(req_get)
-
-                        new_h = headers.copy()
-                        new_h['Host'] = j+'-'+i
-                        req_get = RequestObject('reqID', "GET", proxy, new_h,
-                                                timeout, cookies, url,
-                                                postdata, module)
-                        requestList.append(req_get)
+            for i in domain:
+                for j in common:
+                    new_h = headers.copy()
+                    new_h['Host'] = j+'-'+i
+                    req_get = RequestObject('reqID', "GET", proxy, new_h,
+                                            timeout, cookies, url,
+                                            postdata, module)
+                    requestList.append(req_get)
         return requestList
