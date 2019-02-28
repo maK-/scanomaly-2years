@@ -31,6 +31,13 @@ class Vhost(IPlugin):
                 req_get = RequestObject('reqID', "GET", proxy, new_h, timeout, 
                                         cookies, url, postdata, module)
                 requestList.append(req_get)
+
+                new_h = headers.copy()
+                new_h['Host'] = i+'-'+domain
+                req_get = RequestObject('reqID', "GET", proxy, new_h,
+                                         timeout, cookies, url,
+                                         postdata, module)
+                requestList.append(req_get)
                 if i != '':
                     subd = i+'.'+domain
                     new_h = headers.copy()
@@ -38,7 +45,9 @@ class Vhost(IPlugin):
                     req_get = RequestObject('reqID', "GET", proxy, new_h, 
                                             timeout, cookies, url, postdata, 
                                             module)
-                requestList.append(req_get)
+                    requestList.append(req_get)
+
+
             if len(datalist) > 1:
                 for i in domains:
                     new_h = headers.copy()
@@ -46,13 +55,5 @@ class Vhost(IPlugin):
                     req_get = RequestObject('reqID', "GET", proxy, new_h, 
                                             timeout, cookies, url, postdata,
                                             module)
-                    requestList.append(req_get)
-            for i in domain:
-                for j in common:
-                    new_h = headers.copy()
-                    new_h['Host'] = j+'-'+i
-                    req_get = RequestObject('reqID', "GET", proxy, new_h,
-                                            timeout, cookies, url,
-                                            postdata, module)
                     requestList.append(req_get)
         return requestList

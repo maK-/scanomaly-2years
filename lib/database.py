@@ -89,21 +89,21 @@ class Database:
     def return_all(self):
         self.conn = apsw.Connection(self.dbfile)
         self.cursor = self.conn.cursor()
-        select = 'SELECT requests.module, requests.url, responses.responseSize,'
-        select += ' responses.statusCode, responses.time, responses.numHeaders,'
-        select += ' responses.numTokens FROM requests '
+        select = 'SELECT requests.module,requests.url,requests.headers,'
+        select += 'responses.responseSize,responses.statusCode,responses.time,'
+        select += 'responses.numHeaders,responses.numTokens FROM requests '
         select += 'INNER JOIN responses ON responses.respID == requests.reqID'
         try:
             self.cursor.execute(select)
             resps = self.cursor.fetchall()
-            forprint = fg(1)+'Module: '+fg(8)+'URL '+fg(4)+'status '+fg(10)
+            forprint = fg(1)+'Module: '+self.rs+'URL '+fg(4)+'status '+fg(10)
             forprint += 'size '+fg(3)+'time '+fg(13)+'numHeaders '+fg(14)
-            forprint += 'numTokens'+self.rs
+            forprint += 'numTokens'+fg(8)+' headers'+self.rs
             print(forprint)
             for i in resps:
-                response = fg(1)+i[0]+self.rs+': '+fg(8)+i[1]+' '+fg(4)+i[3]
-                response += ' '+fg(10)+i[2]+' '+fg(3)+i[4]+' '+fg(13)+i[5]+' '
-                response += fg(14)+i[6]+self.rs
+                response = fg(1)+i[0]+self.rs+': '+self.rs+i[1]+' '+fg(4)+i[4]
+                response += ' '+fg(10)+i[3]+' '+fg(3)+i[5]+' '+fg(13)+i[6]+' '
+                response += fg(14)+i[7]+'  '+fg(8)+i[2]+self.rs
                 print(response)
         except apsw.OperationalError:
             print('SQL Error: return all')
