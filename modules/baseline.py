@@ -19,22 +19,32 @@ class Baseline(IPlugin):
     def gen(self, cwd, urls, proxy, headers, timeout, cookies, postdata, 
             module):
         requestList = []   #Store generated request objects
-        requestMethods = ['GET','POST','OPTIONS','HEAD','PUT','DELETE','PATCH']
-        
-        for url in urls:
-            for j in requestMethods:
-                req_get = RequestObject('reqID', j, proxy, headers, timeout, 
-                                        cookies, url, postdata, module)
-                requestList.append(req_get)
+
+        """
+        *   The baseline request will later be used for smarter things
+        *   For example auto ignoring status codes or certain sizes
+        *   or a baseline for our AI to detect anomalies.
+        """
 
         for url in urls:
+            #Standard baseline request
+            req_get = RequestObject('reqID', 'GET', proxy, headers, timeout,
+                                        cookies, url, postdata, module)
+            requestList.append(req_get)
+
             #Does our response size change for each request?
             req_get = RequestObject('reqID', 'GET', proxy, headers, timeout,
                                         cookies, url, postdata, module)
             requestList.append(req_get)
 
-            #Baseline of a 404 page
+            #Baseline of a 404 dir
             url404 = url + self.tenstr
+            req_get = RequestObject('reqID', 'GET', proxy, headers, timeout,
+                                        cookies, url404, postdata, module)
+            requestList.append(req_get)
+
+            #Different for a file?
+            url404 = url + self.tenstr + '.html'
             req_get = RequestObject('reqID', 'GET', proxy, headers, timeout,
                                         cookies, url404, postdata, module)
             requestList.append(req_get)
