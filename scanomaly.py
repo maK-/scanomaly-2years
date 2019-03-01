@@ -61,6 +61,8 @@ if __name__ == '__main__':
                         help=fg(8)+'Specify number of threads to use'+rs)
     parse.add_argument('-scan', '--scans', action='store_true', default=False,
                         help=fg(8)+'Run a scan'+rs)
+    parse.add_argument('-cwd', '--setdir', type=str, default=None,
+                        help=fg(8)+'Set the working dir manually')
     
     args = parse.parse_args()
 
@@ -87,6 +89,9 @@ if __name__ == '__main__':
     if args.version == True:
         version = VersionInfo(2.0)
         version.show()
+
+    if args.setdir != None:
+        cwd = args.setdir
 
     #Add user supplied headers
     if args.headers != None:
@@ -122,7 +127,7 @@ if __name__ == '__main__':
         
         #Creating our plugin manager
         manager = PluginManager()
-        manager.setPluginPlaces(["modules"])
+        manager.setPluginPlaces([cwd+"/modules"])
         manager.collectPlugins()
         
         #Get all plugins
