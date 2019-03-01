@@ -62,7 +62,7 @@ if __name__ == '__main__':
     parse.add_argument('-scan', '--scans', action='store_true', default=False,
                         help=fg(8)+'Run a scan'+rs)
     parse.add_argument('-cwd', '--setdir', type=str, default=None,
-                        help=fg(8)+'Set the working dir manually')
+                        help=fg(8)+'Set the working dir manually'+rs)
     
     args = parse.parse_args()
 
