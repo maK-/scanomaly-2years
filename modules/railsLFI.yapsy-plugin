@@ -1,0 +1,9 @@
+[Core]
+Name = railsLFI
+Module = railsLFI
+
+[Documentation]
+Author = Ciaran McNally
+Version = 0.1
+Website = https://securit.ie
+Description = This scans urls for the rails File disclosure issue CVE-2019-5418

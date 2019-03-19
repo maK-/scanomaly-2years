@@ -226,6 +226,13 @@ if __name__ == '__main__':
                                                         total_headers, timeout, 
                                                         cookies, data, z.name,
                                                         args.datalist)
+
+                if z.name == 'railsLFI':
+                    if z.name not in args.modexcl:
+                        results = z.plugin_object.gen(cwd, urls, proxies,
+                                                        total_headers, timeout,
+                                                        cookies, data, z.name,
+                                                        args.datalist)
         #======================================================================        
                 if z.name not in args.modexcl:
                     print('Module: '+fg(1)+str(z.name)+rs)
