@@ -38,41 +38,41 @@ For example dirb-files takes an argument of filetypes `-dl html php asp` etc. If
 #### baseline
 This module will be used as a means of establishing baselines, this can be useful when later assessing the responses for anomalies.
 
-` ./scanomaly.py -u http://127.0.0.1 -m baseline -scan -t 10`
+` ./scanomaly.py -u http://127.0.0.1 -m baseline -scan -t 10 -db example.db`
 
 #### dirb
 This module scans a directory for common directories and filenames. An example use is the following:
 
-` ./scanomaly.py -u http://127.0.0.1/ -m dirb -scan -t 10`
+` ./scanomaly.py -u http://127.0.0.1/ -m dirb -scan -t 10 -db example.db`
 
 #### parameth
 This module is used to brute force parameters and is based on (mak-/parameth)
 
-` ./scanomaly.py -u http://127.0.0.1/ -m parameth -scan -t 10`
+` ./scanomaly.py -u http://127.0.0.1/ -m parameth -scan -t 10 -db example.db`
 
 #### repo
 This module scans a directory for common config, meta-info and code repo files.
 
-` ./scanomaly.py -u http://127.0.0.1/ -m repo -scan -t 10`
+` ./scanomaly.py -u http://127.0.0.1/ -m repo -scan -t 10 -db example.db`
 
 #### archives
 This module scans a directory for common archive files and generates additional archive names from the provided URL
 
-` ./scanomaly.py -u http://127.0.0.1/ -m archives -scan -t 10`
+` ./scanomaly.py -u http://127.0.0.1/ -m archives -scan -t 10 -db example.db`
 
 #### dirb-files
 This modules scans a directory for common file names using a specified file extension (default: html)
 
 You can specify the filetype or file extension to use with `-dl [filetype] [filetype]...`
 
-` ./scanomaly.py -u http://127.0.0.1/ -m dirb-files -dl php -scan -t 10`
+` ./scanomaly.py -u http://127.0.0.1/ -m dirb-files -dl php -scan -t 10 -db example.db`
 
 ### dirb-custom
 This module scans a directory for a provided file list
 
 You can specify a file list to use by using `-dl [wordlist]`
 
-` ./scanomaly.py -u http://127.0.0.1/ -m dirb-custom -dl [wordlist] -scan -t 10`
+` ./scanomaly.py -u http://127.0.0.1/ -m dirb-custom -dl [wordlist] -scan -t 10 -db example.db`
 
 #### vhost
 This scans a server for common dev virtual hosts or for a provided list of domains
@@ -81,4 +81,4 @@ You can provide a single domain to scan for using `-dl blah.com`
 
 It is also possible to use `-dl blah.com [list of sub/domains]`
 
-` ./scanomaly.py -u http://127.0.0.1/ -m vhost -dl localhost -scan -t 10`
+` ./scanomaly.py -u http://127.0.0.1/ -m vhost -dl localhost -scan -t 10 -db example.db`
