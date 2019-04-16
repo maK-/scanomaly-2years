@@ -67,7 +67,7 @@ You can specify the filetype or file extension to use with `-dl [filetype] [file
 
 ` ./scanomaly.py -u http://127.0.0.1/ -m dirb-files -dl php -scan -t 10 -db example.db`
 
-### dirb-custom
+#### dirb-custom
 This module scans a directory for a provided file list
 
 You can specify a file list to use by using `-dl [wordlist]`
