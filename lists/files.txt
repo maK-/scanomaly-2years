@@ -39533,6 +39533,7 @@ weather.php
 weather.txt
 weave.htm
 .web
+.well-known/apple-app-site-association
 web
 web2.0
 Web2.0
